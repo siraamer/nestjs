@@ -3,10 +3,11 @@ import { AppController } from './app.controller';
 import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entity/user.entity';
-import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
-  controllers: [AppController, AuthController],
+  controllers: [AppController],
   imports: [
     UserModule,
     TypeOrmModule.forRoot({
@@ -19,6 +20,8 @@ import { AuthController } from './auth/auth.controller';
       entities: [User],
       synchronize: true,
     }),
+    AuthModule,
+    ProfileModule,
   ],
 })
 export class AppModule {}

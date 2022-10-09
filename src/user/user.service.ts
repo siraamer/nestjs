@@ -22,6 +22,9 @@ export class UserService {
   getUser(id: number): Promise<User | null> {
     return this.userRepository.findOne({ where: { id } });
   }
+  getByEmail(email: string): Promise<User | null> {
+    return this.userRepository.findOne({ where: { email } });
+  }
   delete(id: number) {
     return this.userRepository.delete(id);
   }
